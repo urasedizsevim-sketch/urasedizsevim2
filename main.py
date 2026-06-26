@@ -29,6 +29,7 @@ def radar_guncelle():
                 eski_fiyat = bilgiler[2].strip()
                 sure = bilgiler[3].strip()
                 link = bilgiler[4].strip()
+                indirim_durumu = bilgiler[5].strip()
 
                 tag_class = "tag-epic"
                 if platform.lower() == "steam":
@@ -43,7 +44,7 @@ def radar_guncelle():
                 <div class="game-title">{oyun_adi}</div>
                 <div class="price-container">
                     <span class="old-price">₺{eski_fiyat}</span>
-                    <span class="free-price">BEDAVA</span>
+                    <span class="free-price">{indirim_durumu}</span>
                 </div>
                 <div class="time-left">⏳ Fırsatın Bitmesine: <b>{sure}</b></div>
             </div>
