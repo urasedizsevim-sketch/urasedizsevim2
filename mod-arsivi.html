@@ -1,1 +1,195 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Güvenli Mod Arşivi | UES Gamer Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 15px #00ffcc;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            color: #b3b3b3;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Güvenli Rozeti */
+        .secure-badge {
+            display: inline-block;
+            background-color: rgba(0, 255, 204, 0.1);
+            color: #00ffcc;
+            border: 1px solid #00ffcc;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 0 10px rgba(0, 255, 204, 0.2);
+        }
+
+        /* Grid Sistemi ile Kartları Yan Yana Dizme */
+        .mod-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* Mod Kartı Tasarımı */
+        .mod-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .mod-card:hover {
+            border-color: #00ffcc;
+            box-shadow: 0 10px 30px rgba(0, 255, 204, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .game-tag {
+            background: #00ffcc;
+            color: #000;
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Farklı oyunlara göre etiket renkleri */
+        .tag-mc { background: #00ffcc; }
+        .tag-gd { background: #ffea00; }
+        .tag-rb { background: #ff0055; color: #fff; }
+
+        .mod-title {
+            font-size: 1.4rem;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .mod-desc {
+            color: #aaa;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 25px;
+            min-height: 70px;
+        }
+
+        /* İndir Butonu */
+        .download-btn {
+            display: block;
+            text-align: center;
+            background: transparent;
+            border: 2px solid #00ffcc;
+            color: #00ffcc;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn:hover {
+            background: #00ffcc;
+            color: #000;
+            box-shadow: 0 0 15px #00ffcc;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: #b3b3b3;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            transition: color 0.3s;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🛡️ Güvenli Mod Arşivi</h1>
+        <p>İnternetin karanlık köşelerinde virüs aramana gerek yok. UES Terminal tarafından bizzat test edilmiş, onaylı ve %100 temiz modlar burada.</p>
+        <div class="secure-badge">✔️ Tüm Dosyalar Test Edildi</div>
+    </div>
+
+    <div class="mod-grid">
+        
+        <div class="mod-card">
+            <span class="game-tag tag-mc">Minecraft</span>
+            <div class="mod-title">FPS Boost & Optimizasyon Paketi</div>
+            <div class="mod-desc">Düşük sistemlerde bile kasma sorununu çözen, FPS değerini anında katlayan en iyi optimizasyon modlarının birleşimi.</div>
+            <a href="#" class="download-btn">İndir (ZIP) ⬇️</a>
+        </div>
+
+        <div class="mod-card">
+            <span class="game-tag tag-gd">Geometry Dash</span>
+            <div class="mod-title">UES Özel Texture Pack</div>
+            <div class="mod-desc">Oyunun arayüzünü neon ve siberpunk bir tasarıma dönüştüren, göz yormayan özel doku (texture) paketi.</div>
+            <a href="#" class="download-btn">İndir (ZIP) ⬇️</a>
+        </div>
+
+        <div class="mod-card">
+            <span class="game-tag tag-mc">Minecraft</span>
+            <div class="mod-title">UES Özel Texture Pack</div>
+            <div class="mod-desc">---------------</div>
+            <a href="#" class="download-btn">İndir (EXE) ⬇️</a>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-link">⬅ Ana Sayfaya Dön</a>
+
+</body>
+</html>
