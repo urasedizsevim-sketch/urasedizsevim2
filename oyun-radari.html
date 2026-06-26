@@ -1,1 +1,227 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bedava Oyun Radarı | UES Gamer Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #fff;
+            text-shadow: 0 0 15px #ff0055;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .header p {
+            color: #b3b3b3;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 1.1rem;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .live-badge {
+            display: inline-block;
+            background-color: rgba(255, 0, 85, 0.1);
+            color: #ff0055;
+            border: 1px solid #ff0055;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            margin-top: 15px;
+            box-shadow: 0 0 15px rgba(255, 0, 85, 0.3);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+            50% { box-shadow: 0 0 20px rgba(255, 0, 85, 0.6); }
+            100% { box-shadow: 0 0 10px rgba(255, 0, 85, 0.2); }
+        }
+
+        .game-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            max-width: 1200px;
+            width: 100%;
+        }
+
+        /* --- OYUN KARTI TASARIMI --- */
+        .game-card {
+            background: rgba(20, 20, 20, 0.9);
+            border: 1px solid #333;
+            border-radius: 12px;
+            padding: 25px;
+            position: relative;
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .game-card:hover {
+            border-color: #ff0055;
+            box-shadow: 0 10px 30px rgba(255, 0, 85, 0.2);
+            transform: translateY(-5px);
+        }
+
+        .platform-tag {
+            padding: 5px 12px;
+            border-radius: 4px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            display: inline-block;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        /* Platform Renkleri */
+        .tag-epic { background: #fff; color: #000; }
+        .tag-steam { background: #1b2838; color: #fff; border: 1px solid #66c0f4; }
+        .tag-gog { background: #df09ff; color: #fff; }
+
+        .game-title {
+            font-size: 1.5rem;
+            color: #fff;
+            margin-bottom: 10px;
+            word-wrap: break-word;
+        }
+
+        .price-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .old-price {
+            color: #888;
+            text-decoration: line-through;
+            font-size: 1rem;
+        }
+
+        .free-price {
+            color: #ff0055;
+            font-size: 1.4rem;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            text-shadow: 0 0 10px rgba(255, 0, 85, 0.4);
+        }
+
+        .time-left {
+            color: #aaa;
+            font-family: 'Segoe UI', sans-serif;
+            font-size: 0.9rem;
+            margin-bottom: 25px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        .claim-btn {
+            display: block;
+            text-align: center;
+            background: linear-gradient(45deg, #ff0055, #cc0044);
+            color: #fff;
+            padding: 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .claim-btn:hover {
+            box-shadow: 0 0 20px rgba(255, 0, 85, 0.6);
+            transform: scale(1.02);
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-top: 50px;
+            color: #b3b3b3;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            transition: color 0.3s;
+            border: 1px solid #444;
+            padding: 10px 20px;
+            border-radius: 8px;
+        }
+
+        .back-link:hover {
+            color: #fff;
+            background: rgba(255,255,255,0.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>🎁 Bedava Oyun Radarı</h1>
+        <p>Epic Games, Steam ve GOG üzerindeki süreli bedava oyun fırsatlarını senin için takip ediyoruz. Fırsat kaçmadan kütüphanene ekle!</p>
+        <div class="live-badge">🔴 RADAR AKTİF - UES TERMINAL</div>
+    </div>
+
+    <div class="game-grid" id="oyunKutusu">
+        
+        <div class="game-card">
+            <div>
+                <span class="platform-tag tag-epic">Epic Games</span>
+                <div class="game-title">GTA V Premium Edition</div>
+                <div class="price-container">
+                    <span class="old-price">₺749,00</span>
+                    <span class="free-price">BEDAVA</span>
+                </div>
+                <div class="time-left">⏳ Fırsatın Bitmesine: <b>3 Gün Kaldı</b></div>
+            </div>
+            <a href="#" target="_blank" class="claim-btn">Hemen Kap 🚀</a>
+        </div>
+
+        <div class="game-card">
+            <div>
+                <span class="platform-tag tag-steam">Steam</span>
+                <div class="game-title">Half-Life 2</div>
+                <div class="price-container">
+                    <span class="old-price">₺105,00</span>
+                    <span class="free-price">BEDAVA</span>
+                </div>
+                <div class="time-left">⏳ Fırsatın Bitmesine: <b>12 Saat Kaldı</b></div>
+            </div>
+            <a href="#" target="_blank" class="claim-btn">Hemen Kap 🚀</a>
+        </div>
+
+    </div>
+
+    <a href="index.html" class="back-link">⬅ Ana Sayfaya Dön</a>
+
+</body>
+</html>
