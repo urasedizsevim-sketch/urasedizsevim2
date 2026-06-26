@@ -1,1 +1,163 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nick Jeneratörü | UES Gamer Hub</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
 
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #050505;
+            background-image: radial-gradient(circle at center, #1a1a1a 0%, #000 100%);
+            color: #fff;
+            font-family: 'Orbitron', sans-serif;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: rgba(20, 20, 20, 0.9);
+            border: 2px solid #b026ff;
+            border-radius: 16px;
+            padding: 50px 40px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(176, 38, 255, 0.3);
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            color: #fff;
+            text-shadow: 0 0 10px #b026ff;
+            margin-bottom: 10px;
+        }
+
+        p {
+            color: #aaa;
+            font-family: 'Segoe UI', sans-serif;
+            margin-bottom: 40px;
+        }
+
+        .result-box {
+            background: #111;
+            border: 1px solid #444;
+            padding: 20px;
+            border-radius: 8px;
+            font-size: 2rem;
+            font-weight: bold;
+            color: #00ffcc; /* Yazı rengi neon turkuaz */
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.5);
+            margin-bottom: 30px;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            letter-spacing: 2px;
+            word-break: break-all;
+        }
+
+        .btn {
+            background: linear-gradient(45deg, #b026ff, #ff0055);
+            color: #fff;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-family: 'Orbitron', sans-serif;
+            font-weight: bold;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            width: 100%;
+            margin-bottom: 15px;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 20px rgba(176, 38, 255, 0.6);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            border: 1px solid #b026ff;
+            color: #b026ff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(176, 38, 255, 0.1);
+        }
+
+        .back-link {
+            display: block;
+            margin-top: 30px;
+            color: #b3b3b3;
+            text-decoration: none;
+            font-family: 'Segoe UI', sans-serif;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>🔮 Nick Jeneratörü</h1>
+        <p>Efsanevi oyuncu ismini bulmak için butona tıkla.</p>
+
+        <div class="result-box" id="nickDisplay">???</div>
+
+        <button class="btn" onclick="generateNick()">Yeni Nick Üret 🎲</button>
+        <button class="btn btn-secondary" onclick="copyNick()">Kopyala 📋</button>
+
+        <a href="index.html" class="back-link">⬅ Ana Sayfaya Dön</a>
+    </div>
+
+    <script>
+        // --- KELİME HAVUZLARI ---
+        // Buraya istediğin kadar kelime ekleyebilirsin. Ben temel kelimeleri koydum.
+        const prefixes = ["Shadow", "Cyber", "Pixel", "Ghost", "Neon", "Iron", "Mystic", "Dark", "Venom", "Thunder", "Frost", "Nova"];
+        
+        // Dikkat edersen bazı popüler oyun yapılarına uygun kelimeler ekledim.
+        const suffixes = ["Hunter", "Strike", "Blade", "Ninja", "Craft", "Dash", "Blox", "Void", "Rider", "Soul", "Storm", "Pulse"];
+
+        // Nick üretme fonksiyonu
+        function generateNick() {
+            // Rastgele bir kelime başı ve sonu seçiyoruz
+            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+            const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+            
+            // İkisini birleştiriyoruz
+            const finalNick = randomPrefix + randomSuffix;
+            
+            // HTML içindeki kutuya yazdırıyoruz
+            document.getElementById("nickDisplay").innerText = finalNick;
+        }
+
+        // Kopyalama fonksiyonu
+        function copyNick() {
+            const nickText = document.getElementById("nickDisplay").innerText;
+            if (nickText !== "???") {
+                navigator.clipboard.writeText(nickText);
+                alert("Kopyalandı: " + nickText);
+            } else {
+                alert("Önce bir nick üretmelisin!");
+            }
+        }
+    </script>
+
+</body>
+</html>
