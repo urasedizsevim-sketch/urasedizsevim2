@@ -127,36 +127,45 @@
     </div>
 
     <script>
-        // --- KELİME HAVUZLARI ---
-        // Buraya istediğin kadar kelime ekleyebilirsin. Ben temel kelimeleri koydum.
-        const prefixes = ["Shadow", "Cyber", "Pixel", "Ghost", "Neon", "Iron", "Mystic", "Dark", "Venom", "Thunder", "Frost", "Nova"];
+       // --- KELİME HAVUZLARI ---
+const prefixes = ["Shadow", "Cyber", "Pixel", "Ghost", "Neon", "Iron", "Mystic", "Dark", "Venom", "Thunder", "Frost", "Nova"];
+const suffixes = ["Hunter", "Strike", "Blade", "Ninja", "Craft", "Dash", "Blox", "Void", "Rider", "Soul", "Storm", "Pulse"];
+
+// Nick üretme fonksiyonu
+function generateNick() {
+    const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
+    const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
+    const finalNick = randomPrefix + randomSuffix;
+    
+    document.getElementById("nickDisplay").innerText = finalNick;
+}
+
+// Gelişmiş Kopyalama Fonksiyonu (Local Test Uyumlu)
+function copyNick() {
+    const nickText = document.getElementById("nickDisplay").innerText;
+    
+    if (nickText !== "???") {
+        // Geçici bir metin kutusu oluşturup içine nicki koyuyoruz
+        const tempTextArea = document.createElement("textarea");
+        tempTextArea.value = nickText;
         
-        // Dikkat edersen bazı popüler oyun yapılarına uygun kelimeler ekledim.
-        const suffixes = ["Hunter", "Strike", "Blade", "Ninja", "Craft", "Dash", "Blox", "Void", "Rider", "Soul", "Storm", "Pulse"];
-
-        // Nick üretme fonksiyonu
-        function generateNick() {
-            // Rastgele bir kelime başı ve sonu seçiyoruz
-            const randomPrefix = prefixes[Math.floor(Math.random() * prefixes.length)];
-            const randomSuffix = suffixes[Math.floor(Math.random() * suffixes.length)];
-            
-            // İkisini birleştiriyoruz
-            const finalNick = randomPrefix + randomSuffix;
-            
-            // HTML içindeki kutuya yazdırıyoruz
-            document.getElementById("nickDisplay").innerText = finalNick;
-        }
-
-        // Kopyalama fonksiyonu
-        function copyNick() {
-            const nickText = document.getElementById("nickDisplay").innerText;
-            if (nickText !== "???") {
-                navigator.clipboard.writeText(nickText);
-                alert("Kopyalandı: " + nickText);
-            } else {
-                alert("Önce bir nick üretmelisin!");
-            }
-        }
+        // Ekranda görünmemesi için dışarı itiyoruz
+        tempTextArea.style.position = "absolute";
+        tempTextArea.style.left = "-9999px";
+        document.body.appendChild(tempTextArea);
+        
+        // Kutuyu seçip kopyalama emri veriyoruz (Eski ama en sağlam yöntem)
+        tempTextArea.select();
+        document.execCommand("copy");
+        
+        // İşimiz bitince geçici kutuyu siliyoruz
+        document.body.removeChild(tempTextArea);
+        
+        alert("Kopyalandı: " + nickText);
+    } else {
+        alert("Önce bir nick üretmelisin!");
+    }
+}
     </script>
 
 </body>
